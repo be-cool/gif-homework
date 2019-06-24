@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ben Cooley | Gif AJAX Homework</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <h2>Type in whatever funny type of Gifs you want to find</h2>
+        <!-- creating a form here where users can input the type of gifs they want to find -->
+        <form id="gif-search">
+            <label for="gif-input">Search for Gifs</label>
+            <input type="text" id="gif-input"><br>
+
+            <!-- button to make the AJAX call to the api -->
+            <input id="find-gif" type="submit" value="Gif Search">
+        </form>
+
+        <div id="gif-area"></div>
+
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js"></script>
+</body>
+</html>
