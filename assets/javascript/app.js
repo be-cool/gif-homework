@@ -7,7 +7,7 @@ function showGifs() {
 
     var gifButton = $(this).attr("data-name")
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rM0DgW7jZ67BhNWEoArOyaQV5wA6zvPN&q=" + gifButton + "&limit=10&offset=0&rating=PG&lang=en"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rM0DgW7jZ67BhNWEoArOyaQV5wA6zvPN&q=" + gifButton + "&limit=10&offset=0&rating=PG13&lang=en"
 
 
     $.ajax({
@@ -30,8 +30,9 @@ function showGifs() {
             var pOne = $("<p>").text("Rating: " + rating);
             gifDiv.append(pOne);
 
-            var gifURL = response.data[i].images.fixed_height_still.url;
-            var gif = $("<img>").attr("src", gifURL).attr("data-id", i).attr("data-name", gifButton).attr("data-animation",'still').addClass("gifName").attr("id", i);
+            var gifURL = response.data[i].images.fixed_height.url;
+            // create an image tag and give the attr method for 
+            var gif = $("<img>").attr("src", gifURL).attr("data-id", i).attr("data-name", gifButton).attr("data-animation", 'animate').addClass("gifName").attr("id", i);
 
             gifDiv.append(gif);
 
@@ -68,5 +69,39 @@ $("#find-gif").on("click", function (event) {
     createButtons();
 })
 
-$(document).on('click', ".gif-button", showGifs)
+
+// trying to create a function to make it so when you click on the Gif, it will become animated or still and back and forth
+// having some trouble, might not use it all and just make it animated when it opens
+function animate () {
+    // identifying variables to pull data from each gif and then be able to animate and make it still
+    var id = $(this).attr("data-id");
+    var name = $(this).attr("data-name");
+    var animation = $(this).attr("data-animation");
+
+    var gifButton = name;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rM0DgW7jZ67BhNWEoArOyaQV5wA6zvPN&q=" + gifButton + "&limit=10&offset=0&rating=PG13&lang=en"
+    var stillGif;
+    var animateGif;
+    var arrGif = [];
+
+    $ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        stillGif = response.data[id].images.fixed_height_still.url;
+        gifAnimate = response.data[id].images.fixed_height.url;
+        if (animation === "still") {
+            $("#"+id).attr("src", animateGif);
+            $("#"+id).attr("data-animation", "animate");
+        }
+        else {
+            $("#"+id).attr("src", stillGif);
+            $("#"+id).attr("data-animation", "still");
+        }
+    });
+    
+}
+
+$(document).on('click', ".gif-button", showGifs);
+$(document).on('click', '.gifName', animate);
 createButtons();
