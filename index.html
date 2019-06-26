@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ben Cooley | Gif AJAX Homework</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" /> -->
 </head>
 <body>
-    <h2>Type in whatever funny type of Gifs you want to find</h2>
+    <h2>Search for whatever funny type of Gifs you want to find</h2>
         <!-- creating a form here where users can input the type of gifs they want to find -->
         <form id="gif-search">
             <label for="gif-input">Search for Gifs</label>
@@ -16,8 +16,15 @@
 
             <!-- button to make the AJAX call to the api -->
             <input id="find-gif" type="submit" value="Gif Search">
+
+            <!-- button to add buttons -->
+            <!-- <input id="add-movie" type="submit" value="Add a Movie, Yo!"> -->
         </form>
 
+        <!-- area to put the buttons -->
+        <div id="button-area"></div>
+        <br>
+        <!-- area to put the gifs -->
         <div id="gif-area"></div>
 
         <script
